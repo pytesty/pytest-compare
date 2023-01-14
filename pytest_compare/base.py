@@ -9,8 +9,12 @@ class CompareBase:
     def compare(self, other: Any) -> bool:
         """
         Compare two objects.
-        :param other: The other object to compare to.
-        :return: True if the objects are equal, False otherwise.
+
+        Args:
+            other (pd.DataFrame): The other object to compare to.
+
+        Returns:
+             bool: True if the objects are equal, False otherwise.
         """
         pass
 

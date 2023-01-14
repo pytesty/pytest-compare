@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "pytest-compare"
+version = "0.0.1"
+dependencies = [
+    "pytest",
+]
+
+
+[tool.setuptools.packages.find]
+include = ["pytest_compare"]
+namespaces = false
+
+
+[project.optional-dependencies]
+dataframe = ["pandas"]

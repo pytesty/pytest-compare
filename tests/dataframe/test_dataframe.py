@@ -17,7 +17,7 @@ class TestCompareDataFrame(BaseTest):
             [],
         ],
     )
-    def test_call_args(
+    def test_call_args_with_columns(
         self,
         method_call_test_args: Mock,
         expected_call_args: Tuple[CompareBase | Any],
@@ -34,7 +34,7 @@ class TestCompareDataFrame(BaseTest):
             [],
         ],
     )
-    def test_call_kwargs(
+    def test_call_kwargs_with_columns(
         self,
         method_call_test_kwargs: Mock,
         expected_call_kwargs: Dict[str, CompareBase | Any],
@@ -45,7 +45,7 @@ class TestCompareDataFrame(BaseTest):
     @pytest.mark.parametrize(
         "expected_df_columns", [["column_1", "column_2", "column_3", "not_in_df"]]
     )
-    def test_call_args(
+    def test_call_args_unidentified_column(
         self,
         method_call_test_args: Mock,
         expected_call_args: Tuple[CompareBase | Any],
@@ -57,7 +57,7 @@ class TestCompareDataFrame(BaseTest):
     @pytest.mark.parametrize(
         "expected_df_columns", [["column_1", "column_2", "column_3", "not_in_df"]]
     )
-    def test_call_kwargs(
+    def test_call_kwargs_unidentified_column(
         self,
         method_call_test_kwargs: Mock,
         expected_call_kwargs: Dict[str, CompareBase | Any],

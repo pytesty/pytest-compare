@@ -4,26 +4,25 @@ on: [push]
 
 jobs:
   test:
-    Test-Job:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
 
-      - id: setup_python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+    - id: setup_python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
 
-      - name: Install python dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -e ."[pandas]"
-          pip install -r requirements-dev.txt
+    - name: Install python dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -e ."[pandas]"
+        pip install -r requirements-dev.txt
 
-      - name: Run black formatter
-        uses: psf/black@stable
-        with:
-          options: "--check"
+    - name: Run black formatter
+      uses: psf/black@stable
+      with:
+        options: "--check"
 
-      - name: Run tests
-        run: pytest
+    - name: Run tests
+      run: pytest

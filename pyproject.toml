@@ -1,20 +1,58 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "setuptools_scm[toml]"]
 build-backend = "setuptools.build_meta"
 
 
 [project]
 name = "pytest-compare"
-version = "0.0.1"
+description = "pytest plugin for comparing call arguments."
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [{ name = "Ilya Michlin", email = "ilyamichlin1@gmail.com" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+
+    "Intended Audience :: Developers",
+
+    "Operating System :: MAC OS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
 dependencies = [
     "pytest",
 ]
-
-
-[tool.setuptools.packages.find]
-include = ["pytest_compare"]
-namespaces = false
+dynamic = ["version"]
 
 
 [project.optional-dependencies]
 dataframe = ["pandas"]
+
+
+[tool.setuptools_scm]
+write_to = "pytest_compare/_version.py"
+
+
+[tool.setuptools.packages.find]
+include = ["pytest_compare*"]
+namespaces = false
+
+
+[tools.black]
+force-exclude = '''
+/(
+  | /*venv*/
+  | /.eggs
+  | /.git
+  | /.tox
+  | /dist
+  | pytest_compare/_version.py
+)/
+'''

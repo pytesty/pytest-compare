@@ -1,4 +1,4 @@
-from typing import Tuple, Dict, Optional
+from typing import Dict, Optional
 
 import pytest
 
@@ -12,8 +12,13 @@ def actual_reverse_contains() -> Optional[bool]:
 
 
 @pytest.fixture
-def actual_call_args(actual_dict: dict, actual_reverse_contains: bool) -> Tuple[dict]:
-    return (actual_dict,)
+def actual_call_args(
+    actual_dict: dict, actual_reverse_contains: bool
+) -> tuple[dict] | tuple[dict, bool]:
+    if actual_reverse_contains is None:
+        return (actual_dict,)
+    else:
+        return (actual_dict, actual_reverse_contains)
 
 
 @pytest.fixture
@@ -31,16 +36,16 @@ def expected_reverse_contains(actual_reverse_contains: bool) -> Optional[bool]:
 @pytest.fixture
 def expected_call_args(
     expected_dict: dict, expected_reverse_contains: bool, actual_reverse_contains: bool
-) -> Tuple[CompareBase, Optional[bool]]:
+) -> tuple[CompareDictContains, bool] | tuple[CompareDictContains]:
     compare_method = (
         CompareDictContains(expected_dict, actual_reverse_contains)
         if expected_reverse_contains
         else CompareDictContains(expected_dict)
     )
-    if expected_reverse_contains:
-        return compare_method, expected_reverse_contains
-    else:
+    if expected_reverse_contains is None:
         return (compare_method,)
+    else:
+        return compare_method, expected_reverse_contains
 
 
 @pytest.fixture

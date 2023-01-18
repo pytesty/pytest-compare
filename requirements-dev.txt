@@ -1,1 +1,3 @@
 black
+setuptools-scm
+build

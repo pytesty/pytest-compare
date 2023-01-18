@@ -46,9 +46,9 @@ class CompareDictContains(CompareDictBase):
             return False
 
         if self._reverse_contains:
-            return self._expected.items() <= actual.items()
-        else:
             return actual.items() <= self._expected.items()
+        else:
+            return self._expected.items() <= actual.items()
 
 
 class CompareDickKeys(CompareDictBase):

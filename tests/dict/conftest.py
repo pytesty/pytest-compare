@@ -1,6 +1,9 @@
 import pytest
 
 
+DICT_LENGTH = 10
+
+
 def create_dict(entries_format: str, length: int) -> dict:
     """Create a dict with a given format."""
     return {entries_format.format(n): n for n in range(length)}
@@ -13,7 +16,7 @@ def actual_entries_format() -> str:
 
 @pytest.fixture
 def actual_dict_length() -> int:
-    return 10
+    return DICT_LENGTH
 
 
 @pytest.fixture

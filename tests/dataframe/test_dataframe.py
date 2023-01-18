@@ -9,7 +9,7 @@ from tests.base_test import BaseTest
 
 class TestCompareDataFrame(BaseTest):
     @pytest.mark.parametrize(
-        "expected_df_columns",
+        "expected_columns",
         [
             ["column_1", "column_2", "column_3"],
             ["column_1", "column_2"],
@@ -21,12 +21,12 @@ class TestCompareDataFrame(BaseTest):
         self,
         method_call_test_args: Mock,
         expected_call_args: Tuple[CompareBase | Any],
-        expected_df_columns: list[str],
+        expected_columns,
     ):
         method_call_test_args.assert_called_once_with(*expected_call_args)
 
     @pytest.mark.parametrize(
-        "expected_df_columns",
+        "expected_columns",
         [
             ["column_1", "column_2", "column_3"],
             ["column_1", "column_2"],
@@ -38,30 +38,30 @@ class TestCompareDataFrame(BaseTest):
         self,
         method_call_test_kwargs: Mock,
         expected_call_kwargs: Dict[str, CompareBase | Any],
-        expected_df_columns: list[str],
+        expected_columns,
     ):
         method_call_test_kwargs.assert_called_once_with(**expected_call_kwargs)
 
     @pytest.mark.parametrize(
-        "expected_df_columns", [["column_1", "column_2", "column_3", "not_in_df"]]
+        "expected_columns", [["column_1", "column_2", "column_3", "not_in_df"]]
     )
     def test_call_args_unidentified_column(
         self,
         method_call_test_args: Mock,
         expected_call_args: Tuple[CompareBase | Any],
-        expected_df_columns: list[str],
+        expected_columns,
     ):
         with pytest.raises(KeyError):
             method_call_test_args.assert_called_once_with(*expected_call_args)
 
     @pytest.mark.parametrize(
-        "expected_df_columns", [["column_1", "column_2", "column_3", "not_in_df"]]
+        "expected_columns", [["column_1", "column_2", "column_3", "not_in_df"]]
     )
     def test_call_kwargs_unidentified_column(
         self,
         method_call_test_kwargs: Mock,
         expected_call_kwargs: Dict[str, CompareBase | Any],
-        expected_df_columns: list[str],
+        expected_columns,
     ):
         with pytest.raises(KeyError):
             method_call_test_kwargs.assert_called_once_with(**expected_call_kwargs)

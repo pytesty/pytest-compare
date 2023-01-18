@@ -16,20 +16,20 @@ class CompareDictBase(CompareBase, ABC):
         self._expected = expected
 
 
-class CompareDictSubSet(CompareDictBase):
+class CompareDictContains(CompareDictBase):
     """CompareDictSubSet is a class that compares two dictionaries and
     checks if the first dictionary is a subset of the second dictionary.
     """
 
-    def __init__(self, expected: dict, reverse_compare: bool = False):
+    def __init__(self, expected: dict, reverse_contains: bool = False):
         """Initialize the class.
 
         Args:
             expected (dict): First dictionary.
-            reverse_compare (bool, optional): If True, the comparison is reversed.
+            reverse_contains (bool, optional): If True, the comparison is reversed.
         """
         super().__init__(expected)
-        self._reverse_compare = reverse_compare
+        self._reverse_contains = reverse_contains
 
     def compare(self, actual) -> bool:
         """Compare two dictionaries and check if the first dictionary is a
@@ -45,10 +45,10 @@ class CompareDictSubSet(CompareDictBase):
         if not isinstance(actual, dict):
             return False
 
-        if self._reverse_compare:
-            return actual.items() <= self._expected.items()
-        else:
+        if self._reverse_contains:
             return self._expected.items() <= actual.items()
+        else:
+            return actual.items() <= self._expected.items()
 
 
 class CompareDickKeys(CompareDictBase):
@@ -68,6 +68,6 @@ class CompareDickKeys(CompareDictBase):
             bool: True if the first dictionary has the same keys as the
                 second dictionary, False otherwise.
         """
-        return isinstance(actual, dict) and set(self._expected.keys()) == set(
-            actual.keys()
+        return isinstance(actual, dict) and set(actual.keys()) == set(
+            self._expected.keys()
         )

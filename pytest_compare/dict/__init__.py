@@ -1,6 +1,7 @@
-from dict import CompareDictSubSet
+from .dict import CompareDictContains, CompareDickKeys
 
 
 __all__ = [
-    "CompareDictSubSet",
+    "CompareDictContains",
+    "CompareDickKeys",
 ]

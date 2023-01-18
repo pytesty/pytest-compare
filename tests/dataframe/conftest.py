@@ -13,46 +13,46 @@ def create_dataframe(columns: List[str], rows_n: int = 10) -> pd.DataFrame:
 
 
 @pytest.fixture
-def actual_df_columns() -> List[str]:
+def actual_columns() -> List[str]:
     return ["column_1", "column_2", "column_3"]
 
 
 @pytest.fixture
-def expected_df_columns() -> List[str] | None:
+def expected_columns() -> List[str] | None:
     return None
 
 
 @pytest.fixture
-def df(actual_df_columns: List[str]) -> pd.DataFrame:
-    return create_dataframe(actual_df_columns)
+def df(actual_columns: List[str]) -> pd.DataFrame:
+    return create_dataframe(actual_columns)
 
 
 @pytest.fixture
 def expected_call_args(
-    df: pd.DataFrame, expected_df_columns: List[str], actual_df_columns: List[str]
-) -> Tuple[CompareBase | Any]:
-    return CompareDataFrame(df, expected_df_columns), actual_df_columns
+    df: pd.DataFrame, expected_columns: List[str], actual_columns: List[str]
+) -> Tuple[CompareBase, List]:
+    return CompareDataFrame(df, expected_columns), actual_columns
 
 
 @pytest.fixture
 def expected_call_kwargs(
-    df: pd.DataFrame, expected_df_columns: List[str], actual_df_columns: List[str]
+    df: pd.DataFrame, expected_columns: List[str], actual_columns: List[str]
 ) -> Dict[str, CompareBase | Any]:
     return {
-        "dataframe": CompareDataFrame(df, expected_df_columns),
-        "columns": actual_df_columns,
+        "expected": CompareDataFrame(df, expected_columns),
+        "columns": actual_columns,
     }
 
 
 @pytest.fixture
 def actual_call_args(
-    df: pd.DataFrame, actual_df_columns: List[str]
-) -> Tuple[pd.DataFrame]:
-    return df, actual_df_columns
+    df: pd.DataFrame, actual_columns: List[str]
+) -> Tuple[pd.DataFrame, List]:
+    return df, actual_columns
 
 
 @pytest.fixture
 def actual_call_kwargs(
-    df: pd.DataFrame, actual_df_columns: List[str]
+    df: pd.DataFrame, actual_columns: List[str]
 ) -> Dict[str, pd.DataFrame]:
-    return {"dataframe": df, "columns": actual_df_columns}
+    return {"expected": df, "columns": actual_columns}

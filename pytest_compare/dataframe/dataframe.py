@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import Optional, List
 
 import pandas as pd
@@ -5,7 +6,22 @@ import pandas as pd
 from pytest_compare.base import CompareBase
 
 
-class CompareDataFrame(CompareBase):
+class CompareDataFrameBase(CompareBase, ABC):
+    def __init__(self, expected: pd.DataFrame):
+        """Initialize the class.
+
+        Args:
+            expected (pd.DataFrame): First dataframe.
+        """
+        if not isinstance(expected, pd.DataFrame):
+            raise TypeError(
+                f"Dataframe must be a pandas DataFrame, not {type(expected)}"
+            )
+
+        self._expected = expected
+
+
+class CompareDataFrame(CompareDataFrameBase):
     """Compare two dataframes"""
 
     def __init__(self, expected: pd.DataFrame, columns: Optional[List[str]] = None):
@@ -15,7 +31,10 @@ class CompareDataFrame(CompareBase):
             expected (pd.DataFrame): Dataframe to compare.
             columns (Optional[List[str]], optional): Columns to compare. If None, all columns are compared. Defaults to None.
         """
-        self._expected = expected
+        if columns and not isinstance(columns, list):
+            raise TypeError(f"Columns must be a list, not {type(columns)}")
+
+        super().__init__(expected)
         self._columns = columns
 
     def compare(self, actual) -> bool:

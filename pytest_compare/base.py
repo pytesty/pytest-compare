@@ -6,17 +6,17 @@ class CompareBase:
     """Base class for all comparison classes."""
 
     @abstractmethod
-    def compare(self, other: Any) -> bool:
+    def compare(self, actual: Any) -> bool:
         """
         Compare two objects.
 
         Args:
-            other (pd.DataFrame): The other object to compare to.
+            actual (pd.DataFrame): The other object to compare to.
 
         Returns:
              bool: True if the objects are equal, False otherwise.
         """
         pass
 
-    def __eq__(self, other):
-        return self.compare(other)
+    def __eq__(self, actual):
+        return self.compare(actual)

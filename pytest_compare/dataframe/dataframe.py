@@ -8,30 +8,30 @@ from pytest_compare.base import CompareBase
 class CompareDataFrame(CompareBase):
     """Compare two dataframes"""
 
-    def __init__(self, dataframe: pd.DataFrame, columns: Optional[List[str]] = None):
+    def __init__(self, expected: pd.DataFrame, columns: Optional[List[str]] = None):
         """Initialize the class.
 
         Args:
-            dataframe (pd.DataFrame): Dataframe to compare.
+            expected (pd.DataFrame): Dataframe to compare.
             columns (Optional[List[str]], optional): Columns to compare. If None, all columns are compared. Defaults to None.
         """
-        self.dataframe = dataframe
-        self.columns = columns
+        self._expected = expected
+        self._columns = columns
 
-    def compare(self, other) -> bool:
+    def compare(self, actual) -> bool:
         """Compare two dataframes.
 
         Args:
-            other (pd.DataFrame): Dataframe to compare.
+            actual (pd.DataFrame): Dataframe to compare.
 
         Returns:
             bool: True if the first dictionary is a subset of the second
                 dictionary, False otherwise.
         """
-        if not isinstance(other, pd.DataFrame):
+        if not isinstance(actual, pd.DataFrame):
             return False
 
-        if not self.columns:
-            return self.dataframe.equals(other)
+        if not self._columns:
+            return actual.equals(self._expected)
         else:
-            return self.dataframe[self.columns].equals(other[self.columns])
+            return actual[self._columns].equals(self._expected[self._columns])

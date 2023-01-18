@@ -1,0 +1,1 @@
+VERSION_REGEX = ^(__version__ = "(\d+.)*)(\d+)((a|b|rc)\d*)(.post\d+)?(.dev\d+)?(")

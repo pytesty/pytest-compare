@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "pytest-compare"
+name = "pytest_compare"
 description = "pytest plugin for comparing call arguments."
 readme = "README.md"
 requires-python = ">=3.7"
@@ -14,7 +14,7 @@ classifiers = [
 
     "Intended Audience :: Developers",
 
-    "Operating System :: MAC OS",
+    "Operating System :: MacOS",
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
 

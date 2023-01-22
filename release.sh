@@ -86,11 +86,11 @@ python -m build
 
 
 # Publish Test
-twine upload dist/* --repository-url https://test.pypi.org/legacy/ --username $TEST_PYPI_USERNAME --password $TEST_PYPI_PASSWORDT
+twine upload -r pypi dist/*
 
 
 # Publish
-twine upload dist/* --verbose --username $PYPI_USERNAME --password $PYPI_PASSWORDT
+twine upload -r pypitest dist/*
 
 
 # Create Github Release

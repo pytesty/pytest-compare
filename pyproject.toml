@@ -57,5 +57,6 @@ force-exclude = '''
   | /.git
   | /dist
   | /pytest_compare.egg-info
+  | *.bac
 )/
 '''

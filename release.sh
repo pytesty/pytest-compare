@@ -74,10 +74,10 @@ rm $VERSION_FILE_PATH.bac
 
 
 # Commit and push new version
-git checkout -b "release-v$RELEASE_VERSION" \
-git commit -am $RELEASE_VERSION \
-git checkout master \
-git merge "release-v$RELEASE_VERSION" \
+git checkout -b "release-v$RELEASE_VERSION"
+git commit -am $RELEASE_VERSION
+git checkout master
+git merge "release-v$RELEASE_VERSION"
 git push https://$GH_TOKEN@github.com/IlyaMichlin/pytest-compare.git
 
 

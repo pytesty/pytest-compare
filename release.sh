@@ -10,17 +10,6 @@ do
 done
 
 
-# Validate required arguments
-REQUIRED_ENVS=("GH_TOKEN" "TEST_PYPI_USERNAME" "TEST_PYPI_PASSWORD" "PYPI_USERNAME" "PYPI_PASSWORD")
-for env in "${REQUIRED_ENVS[@]}"; do
-    echo "Checking $env"
-    if [ -z "${!env}" ]; then
-        echo "ERROR: $env is not set"
-        exit 1;
-    fi;
-done
-
-
 # Install requirements
 pip install --upgrade -r requirements-release.txt
 
@@ -86,11 +75,11 @@ python -m build
 
 
 # Publish Test
-twine upload -r pypi dist/*
+twine upload -r pypi-pytest-compare dist/*
 
 
 # Publish
-twine upload -r pypitest dist/*
+twine upload -r pypitest-pytest-compare dist/*
 
 
 # Create Github Release

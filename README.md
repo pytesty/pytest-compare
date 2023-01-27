@@ -85,3 +85,34 @@ mock_method.assert_called_once_with(arg_expected)
 ```
 
 If `arg_actual` is not equal to `arg_expected`, an exception will be raised.
+
+
+# Development
+
+Implement features:
+- [ ] Compare classes:
+  - [x] CompareDataFrame: Compare DataFrame
+  - [x] CompareDictContains: Compare dict contains
+  - [x] CompareDickKeys: Compare dict keys
+  - [ ] CompareSeries: Compare Series
+  - [ ] CompareType: Compare object types
+  - [ ] CompareLength: Compare object length
+  - [ ] CompareDictKeys: Compare dict keys
+  - [ ] CompareSubstring: Compare substring
+  - [ ] CompareDataFrameColumns: Compare DataFrame columns
+- [ ] Create testing environment
+  - [x] Create `pytest` tests
+  - [ ] Create tox testing
+- [ ] Create pre-commit hooks
+  - [ ] Run `black` formatting
+  - [ ] Run `mypy` linting
+  - [ ] Run `flake8` linting
+  - [ ] Run `codespell` tests
+  - [ ] Check test coverage
+- [ ] Standardize release process
+  - [x] Auto versioning
+  - [x] Release to TestPyPi
+  - [x] Release to PyPi
+  - [x] Release to GitHub
+  - [ ] Generate CHANGELOG.md
+- [ ] Create documentation website

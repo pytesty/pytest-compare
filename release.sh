@@ -62,6 +62,10 @@ done
 rm $VERSION_FILE_PATH.bac
 
 
+# Generate CHANGELOG.md
+git-changelog . -o CHANGELOG.md
+
+
 # Commit and push new version
 git checkout -b "release-v$RELEASE_VERSION"
 git commit -am $RELEASE_VERSION

@@ -114,5 +114,5 @@ Implement features:
   - [x] Release to TestPyPi
   - [x] Release to PyPi
   - [x] Release to GitHub
-  - [ ] Generate CHANGELOG.md
+  - [x] Generate CHANGELOG.md
 - [ ] Create documentation website

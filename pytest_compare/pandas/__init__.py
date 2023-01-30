@@ -1,4 +1,4 @@
-from .dataframe import CompareDataFrame
+from .pandas import CompareDataFrame
 
 
 __all__ = [

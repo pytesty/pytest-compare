@@ -2,4 +2,3 @@ setuptools
 wheel
 build
 twine
-git-changelog

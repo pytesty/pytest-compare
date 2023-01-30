@@ -1,4 +1,3 @@
-from abc import abstractmethod
 from typing import Any, Tuple, Dict
 from unittest.mock import Mock
 
@@ -8,27 +7,23 @@ from pytest_compare.base import CompareBase
 
 
 @pytest.fixture
-@abstractmethod
 def actual_call_args() -> Tuple[Any]:
-    pass
+    raise NotImplementedError("`actual_call_args` must be implemented")
 
 
 @pytest.fixture
-@abstractmethod
 def actual_call_kwargs() -> Dict[str, Any]:
-    pass
+    raise NotImplementedError("`actual_call_kwargs` must be implemented")
 
 
 @pytest.fixture
-@abstractmethod
 def expected_call_args() -> Tuple[Any]:
-    pass
+    raise NotImplementedError("`expected_call_args` must be implemented")
 
 
 @pytest.fixture
-@abstractmethod
 def expected_call_kwargs() -> Dict[str, CompareBase]:
-    pass
+    raise NotImplementedError("`expected_call_kwargs` must be implemented")
 
 
 @pytest.fixture

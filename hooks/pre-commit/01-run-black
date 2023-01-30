@@ -1,0 +1,10 @@
+#!/bin/sh
+staged_files=$(git diff --staged --name-only HEAD --diff-filter=ACMR | grep -E '\.py$')
+if [ -n "$staged_files" ]; then
+  echo 'BEGIN Run black'
+  python -m black $staged_files
+  echo 'FINISH Run black'
+else
+  echo 'Run black skipped: No Python files were found in `git diff --staged`'
+fi
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+staged_files=$(git diff --staged --name-only HEAD --diff-filter=ACMR | grep -E '\.py$')
+if [ -n "$staged_files" ]; then
+  echo 'BEGIN Run flake8'
+  python -m flake8 $staged_files
+  echo 'FINISH Run flake8'
+else
+  echo 'Run flake8 skipped: No Python files were found in git diff --staged'
+fi

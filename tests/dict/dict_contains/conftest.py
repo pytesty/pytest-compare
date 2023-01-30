@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 
 import pytest
 
@@ -24,7 +24,7 @@ def actual_call_args(
 @pytest.fixture
 def actual_call_kwargs(
     actual_dict: dict, actual_reverse_contains: bool
-) -> Dict[str, dict]:
+) -> Dict[str, Union[Dict, bool]]:
     return {"expected": actual_dict, "reverse_contains": actual_reverse_contains}
 
 

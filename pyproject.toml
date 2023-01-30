@@ -33,7 +33,7 @@ dependencies = [
 
 
 [project.optional-dependencies]
-dataframe = ["pandas"]
+pandas = ["pandas"]
 
 
 [project.urls]
@@ -58,5 +58,21 @@ force-exclude = '''
   | /dist
   | /pytest_compare.egg-info
   | *.bac
+  | .mypy_cache
+  | .coverage
+  | /htmlcov
 )/
 '''
+
+
+[tool.mypy]
+exclude = [
+    "/*venv*"
+]
+ignore_missing_imports = true
+
+
+[tool.codespell]
+skip = "./*venv*,./.git,./dist,./pytest_compare.egg-info,./.mypy_cache,./README.md,./.coverage,./htmlcov"
+count = ''
+quiet-level = 3

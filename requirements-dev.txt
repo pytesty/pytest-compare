@@ -1,1 +1,6 @@
 black
+mypy
+pylint
+flake8
+codespell
+pytest-cov

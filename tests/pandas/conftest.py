@@ -4,7 +4,7 @@ import pandas as pd
 import pytest
 
 from pytest_compare.base import CompareBase
-from pytest_compare.dataframe import CompareDataFrame
+from pytest_compare.pandas import CompareDataFrame
 
 
 def create_dataframe(columns: List[str], rows_n: int = 10) -> pd.DataFrame:

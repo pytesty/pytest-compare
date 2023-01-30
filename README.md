@@ -160,13 +160,13 @@ Implement features:
 - [ ] Create testing environment
   - [x] Create `pytest` tests
   - [ ] Create tox testing
-- [ ] Create pre-commit hooks
-  - [ ] Run `black` formatting
-  - [ ] Run `mypy` linting
-  - [ ] Run `flake8` linting
-  - [ ] Run `codespell` tests
-  - [ ] Check test coverage
-- [ ] Standardize release process
+- [x] Create pre-commit hooks
+  - [x] Run `black` formatting
+  - [x] Run `mypy` linting
+  - [x] Run `flake8` linting
+  - [x] Run `codespell` tests
+  - [x] Check test coverage
+- [x] Standardize release process
   - [x] Auto versioning
   - [x] Release to TestPyPi
   - [x] Release to PyPi

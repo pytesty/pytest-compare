@@ -1,5 +1,6 @@
 # python-compare
 [![PyPI Latest Release](https://img.shields.io/pypi/v/pytest_compare.svg)](https://pypi.org/project/pytest-compare/)
+[![Documentation](https://readthedocs.org/projects/pytest/badge/?version=latest)](https://ilyamichlin.github.io/pytest-compare/documentation/)
 [![DOI](https://github.com/pytest-dev/pytest/workflows/test/badge.svg)](https://github.com/IlyaMichlin/pytest-compare/actions?query=workflow%3Atests)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 

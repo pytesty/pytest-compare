@@ -37,7 +37,8 @@ pandas = ["pandas"]
 
 
 [project.urls]
-documentation = "https://github.com/IlyaMichlin/pytest-compare/blob/master/README.md"
+homepage = "https://ilyamichlin.github.io/pytest-compare/"
+documentation = "https://ilyamichlin.github.io/pytest-compare/documentation/"
 repository = "https://github.com/IlyaMichlin/pytest-compare/"
 
 
@@ -61,6 +62,8 @@ force-exclude = '''
   | .mypy_cache
   | .coverage
   | /htmlcov
+  | /docs
+  | /site
 )/
 '''
 
@@ -73,6 +76,6 @@ ignore_missing_imports = true
 
 
 [tool.codespell]
-skip = "./*venv*,./.git,./dist,./pytest_compare.egg-info,./.mypy_cache,./README.md,./.coverage,./htmlcov"
+skip = "./*venv*,./.git,./dist,./pytest_compare.egg-info,./.mypy_cache,./README.md,./.coverage,./htmlcov,./docs,./site"
 count = ''
 quiet-level = 3

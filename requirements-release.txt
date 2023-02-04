@@ -6,5 +6,5 @@ twine
 
 # docs
 mkdocs
-mkdocstrings[python]
+mkdocstrings-python
 mkdocs-material

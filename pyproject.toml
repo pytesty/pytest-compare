@@ -61,6 +61,8 @@ force-exclude = '''
   | .mypy_cache
   | .coverage
   | /htmlcov
+  | /docs
+  | /site
 )/
 '''
 
@@ -73,6 +75,6 @@ ignore_missing_imports = true
 
 
 [tool.codespell]
-skip = "./*venv*,./.git,./dist,./pytest_compare.egg-info,./.mypy_cache,./README.md,./.coverage,./htmlcov"
+skip = "./*venv*,./.git,./dist,./pytest_compare.egg-info,./.mypy_cache,./README.md,./.coverage,./htmlcov,./docs,./site"
 count = ''
 quiet-level = 3

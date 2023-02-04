@@ -1,5 +1,5 @@
 # python-compare
-[![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org/project/pytest-compare/)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/pytest_compare.svg)](https://pypi.org/project/pytest-compare/)
 [![DOI](https://github.com/pytest-dev/pytest/workflows/test/badge.svg)](https://github.com/IlyaMichlin/pytest-compare/actions?query=workflow%3Atests)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -14,9 +14,6 @@ To install `pytest-compare` from PyPi, run the commmand:
 ```sh
 pip install pytest-compare
 ```
-
-## Dependencies
-The only dependency is `pytest`.
 
 ## Optional dependencies
 Some compare modules may require additional packages to be installed.

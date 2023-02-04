@@ -172,4 +172,4 @@ Implement features:
   - [x] Release to PyPi
   - [x] Release to GitHub
   - [x] Generate CHANGELOG.md
-- [ ] Create documentation website
+- [x] Create documentation website

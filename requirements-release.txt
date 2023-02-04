@@ -1,4 +1,10 @@
+# package release
 setuptools
 wheel
 build
 twine
+
+# docs
+mkdocs
+mkdocstrings[python]
+mkdocs-material

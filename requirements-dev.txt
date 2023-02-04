@@ -4,3 +4,4 @@ pylint
 flake8
 codespell
 pytest-cov
+pytest-sugar

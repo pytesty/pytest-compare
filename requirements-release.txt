@@ -5,6 +5,5 @@ build
 twine
 
 # docs
-mkdocs
 mkdocstrings-python
 mkdocs-material

@@ -37,7 +37,8 @@ pandas = ["pandas"]
 
 
 [project.urls]
-documentation = "https://github.com/IlyaMichlin/pytest-compare/blob/master/README.md"
+homepage = "https://ilyamichlin.github.io/pytest-compare/"
+documentation = "https://ilyamichlin.github.io/pytest-compare/documentation/"
 repository = "https://github.com/IlyaMichlin/pytest-compare/"
 
 

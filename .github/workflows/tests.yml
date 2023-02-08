@@ -32,7 +32,7 @@ jobs:
 
     - name: Run code quality tools
       run: |
-        changed_files=$(git diff --name-only HEAD $(git merge-base HEAD origin/master))
+        changed_files=$(git diff --name-only HEAD $(git merge-base HEAD master))
         ./venv_quality/bin/mypy .
         ./venv_quality/bin/flake8 $changed_files
         codespell

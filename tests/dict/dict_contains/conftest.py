@@ -16,7 +16,7 @@ def actual_call_args(
     actual_dict: dict, actual_reverse_contains: bool
 ) -> Union[Tuple[dict], Tuple[dict, bool]]:
     if actual_reverse_contains is None:
-        return actual_dict,
+        return (actual_dict,)
     else:
         return actual_dict, actual_reverse_contains
 
@@ -43,7 +43,7 @@ def expected_call_args(
         else CompareDictContains(expected_dict)
     )
     if expected_reverse_contains is None:
-        return compare_method,
+        return (compare_method,)
     else:
         return compare_method, expected_reverse_contains
 

@@ -155,7 +155,7 @@ Implement features:
   - [ ] CompareDictKeys: Compare dict keys
   - [ ] CompareSubstring: Compare substring
   - [ ] CompareDataFrameColumns: Compare DataFrame columns
-- [ ] Create testing environment
+- [x] Create testing environment
   - [x] Create `pytest` tests
   - [x] Create tox testing
 - [x] Create pre-commit hooks

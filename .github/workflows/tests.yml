@@ -25,4 +25,6 @@ jobs:
         options: "--check"
 
     - name: Run tests
-      run: tox
+      run: |
+        pip install tox
+        tox

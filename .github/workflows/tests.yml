@@ -8,16 +8,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - id: setup_python
+    - name: Install Python
+      id: setup_python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.10"
-
-    - name: Install python dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -e ".[pandas]"
-        pip install -r requirements-dev.txt
+        python-version: |
+          3.7
+          3.8
+          3.9
+          3.10
+          3.11
 
     - name: Run black formatter
       uses: psf/black@stable
@@ -25,4 +25,6 @@ jobs:
         options: "--check"
 
     - name: Run tests
-      run: pytest
+      run: |
+        pip install tox
+        tox

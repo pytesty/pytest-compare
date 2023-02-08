@@ -1,4 +1,4 @@
-from typing import Tuple, Any, Dict
+from typing import Tuple, Any, Dict, Union
 from unittest.mock import Mock
 
 import pytest
@@ -13,7 +13,7 @@ class TestCompareDictContains(BaseTest):
     def test_reverse_args(
         self,
         method_call_test_args: Mock,
-        expected_call_args: Tuple[CompareBase | Any],
+        expected_call_args: Tuple[Union[CompareBase, Any]],
         actual_reverse_contains: bool,
     ):
         method_call_test_args.assert_called_once_with(*expected_call_args)
@@ -22,7 +22,7 @@ class TestCompareDictContains(BaseTest):
     def test_reverse_kwargs(
         self,
         method_call_test_kwargs: Mock,
-        expected_call_kwargs: Dict[str, CompareBase | Any],
+        expected_call_kwargs: Dict[str, Union[CompareBase, Any]],
         actual_reverse_contains: bool,
     ):
         method_call_test_kwargs.assert_called_once_with(**expected_call_kwargs)
@@ -34,7 +34,7 @@ class TestCompareDictContains(BaseTest):
     def test_contains_correct(
         self,
         method_call_test_args: Mock,
-        expected_call_args: Tuple[CompareBase | Any],
+        expected_call_args: Tuple[Union[CompareBase, Any]],
         expected_dict_length: int,
         actual_reverse_contains: bool,
     ):
@@ -47,7 +47,7 @@ class TestCompareDictContains(BaseTest):
     def test_contains_incorrect(
         self,
         method_call_test_args: Mock,
-        expected_call_args: Tuple[CompareBase | Any],
+        expected_call_args: Tuple[Union[CompareBase, Any]],
         expected_dict_length: int,
         actual_reverse_contains: bool,
     ):

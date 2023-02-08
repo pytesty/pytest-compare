@@ -95,7 +95,7 @@ Create a virtual environment and install the dependencies:
 
     $ python3 -m venv venv
     $ source venv/bin/activate
-    $ pip install -e ".[pandas]" -r requirements-dev.txt
+    $ pip install -e ".[pandas]" -r requirements-dev.txt -r requirements-quality.txt
 
 ### Pre-commit Hooks
 
@@ -157,7 +157,7 @@ Implement features:
   - [ ] CompareDataFrameColumns: Compare DataFrame columns
 - [ ] Create testing environment
   - [x] Create `pytest` tests
-  - [ ] Create tox testing
+  - [x] Create tox testing
 - [x] Create pre-commit hooks
   - [x] Run `black` formatting
   - [x] Run `mypy` linting

@@ -1,4 +1,4 @@
-from typing import Tuple, Any, Dict
+from typing import Tuple, Any, Dict, Union
 from unittest.mock import Mock
 
 import pytest
@@ -20,7 +20,7 @@ class TestCompareDataFrame(BaseTest):
     def test_call_args_with_columns(
         self,
         method_call_test_args: Mock,
-        expected_call_args: Tuple[CompareBase | Any],
+        expected_call_args: Tuple[Union[CompareBase, Any]],
         expected_columns,
     ):
         method_call_test_args.assert_called_once_with(*expected_call_args)
@@ -37,7 +37,7 @@ class TestCompareDataFrame(BaseTest):
     def test_call_kwargs_with_columns(
         self,
         method_call_test_kwargs: Mock,
-        expected_call_kwargs: Dict[str, CompareBase | Any],
+        expected_call_kwargs: Dict[str, Union[CompareBase, Any]],
         expected_columns,
     ):
         method_call_test_kwargs.assert_called_once_with(**expected_call_kwargs)
@@ -48,7 +48,7 @@ class TestCompareDataFrame(BaseTest):
     def test_call_args_unidentified_column(
         self,
         method_call_test_args: Mock,
-        expected_call_args: Tuple[CompareBase | Any],
+        expected_call_args: Tuple[Union[CompareBase, Any]],
         expected_columns,
     ):
         with pytest.raises(KeyError):
@@ -60,7 +60,7 @@ class TestCompareDataFrame(BaseTest):
     def test_call_kwargs_unidentified_column(
         self,
         method_call_test_kwargs: Mock,
-        expected_call_kwargs: Dict[str, CompareBase | Any],
+        expected_call_kwargs: Dict[str, Union[CompareBase, Any]],
         expected_columns,
     ):
         with pytest.raises(KeyError):

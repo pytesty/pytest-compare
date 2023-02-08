@@ -1,7 +1,3 @@
-black
-mypy
-pylint
-flake8
-codespell
-pytest-cov
+tox
+pytest
 pytest-sugar

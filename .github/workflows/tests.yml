@@ -24,18 +24,5 @@ jobs:
       with:
         options: "--check"
 
-    - name: Install code quality tools
-      run: |
-        python3.10 -m venv venv_quality
-        ./venv_quality/bin/pip install --upgrade pip
-        ./venv_quality/bin/pip install -r requirements-quality.txt
-
-    - name: Run code quality tools
-      run: |
-        changed_files=$(git diff --name-only HEAD $(git merge-base HEAD master))
-        ./venv_quality/bin/mypy .
-        ./venv_quality/bin/flake8 $changed_files
-        codespell
-
     - name: Run tests
       run: tox

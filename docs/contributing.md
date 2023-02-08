@@ -8,7 +8,7 @@ Create a virtual environment and install the dependencies:
 
     $ python3 -m venv venv
     $ source venv/bin/activate
-    $ pip install -e ".[pandas]" -r requirements-dev.txt
+    $ pip install -e ".[pandas]" -r requirements-dev.txt -r requirements-quality.txt
 
 ### Pre-commit Hooks
 

@@ -1,11 +1,3 @@
-# testing
 tox
 pytest
 pytest-sugar
-
-# code quality
-black
-mypy
-pylint
-flake8
-codespell

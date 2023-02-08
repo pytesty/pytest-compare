@@ -12,7 +12,12 @@ jobs:
       id: setup_python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.10"
+        python-version: |
+          3.7
+          3.8
+          3.9
+          3.10
+          3.11
 
     - name: Run black formatter
       uses: psf/black@stable
@@ -21,9 +26,9 @@ jobs:
 
     - name: Install code quality tools
       run: |
-        python -m venv venv_quality
+        python3.10 -m venv venv_quality
         ./venv_quality/bin/pip install --upgrade pip
-        ./venv_quality/bin/pip install -e ".[dev]"
+        ./venv_quality/bin/pip install -r requirements-quality.txt
 
     - name: Run code quality tools
       run: |
@@ -31,11 +36,5 @@ jobs:
         ./venv_quality/bin/flake8
         codespell
 
-    - name: Install python dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -e ".[pandas]"
-        pip install pytest pytest-sugar
-
     - name: Run tests
-      run: pytest
+      run: tox

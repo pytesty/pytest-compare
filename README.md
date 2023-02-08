@@ -157,7 +157,7 @@ Implement features:
   - [ ] CompareDataFrameColumns: Compare DataFrame columns
 - [ ] Create testing environment
   - [x] Create `pytest` tests
-  - [ ] Create tox testing
+  - [x] Create tox testing
 - [x] Create pre-commit hooks
   - [x] Run `black` formatting
   - [x] Run `mypy` linting

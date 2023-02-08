@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple, Dict, Any, Optional, Union
 
 import pandas as pd
 import pytest
@@ -18,7 +18,7 @@ def actual_columns() -> List[str]:
 
 
 @pytest.fixture
-def expected_columns() -> List[str] | None:
+def expected_columns() -> Optional[List[str]]:
     return None
 
 
@@ -37,7 +37,7 @@ def expected_call_args(
 @pytest.fixture
 def expected_call_kwargs(
     df: pd.DataFrame, expected_columns: List[str], actual_columns: List[str]
-) -> Dict[str, CompareBase | Any]:
+) -> Dict[str, Union[CompareBase, Any]]:
     return {
         "expected": CompareDataFrame(df, expected_columns),
         "columns": actual_columns,

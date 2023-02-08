@@ -3,8 +3,7 @@ setuptools
 wheel
 build
 twine
-git-changelog
 
-# docs
+# docs release
 mkdocstrings-python
 mkdocs-material

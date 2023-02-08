@@ -8,21 +8,34 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - id: setup_python
+    - name: Install Python
+      id: setup_python
       uses: actions/setup-python@v4
       with:
         python-version: "3.10"
-
-    - name: Install python dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -e ".[pandas]"
-        pip install -r requirements-dev.txt
 
     - name: Run black formatter
       uses: psf/black@stable
       with:
         options: "--check"
+
+    - name: Install code quality tools
+      run: |
+        python -m venv venv_quality
+        ./venv_quality/bin/pip install --upgrade pip
+        ./venv_quality/bin/pip install -e ".[dev]"
+
+    - name: Run code quality tools
+      run: |
+        ./venv_quality/bin/mypy
+        ./venv_quality/bin/flake8
+        codespell
+
+    - name: Install python dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -e ".[pandas]"
+        pip install pytest pytest-sugar
 
     - name: Run tests
       run: pytest

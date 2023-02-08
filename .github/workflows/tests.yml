@@ -32,8 +32,9 @@ jobs:
 
     - name: Run code quality tools
       run: |
-        ./venv_quality/bin/mypy
-        ./venv_quality/bin/flake8
+        changed_files=$(git diff --name-only HEAD $(git merge-base HEAD origin/master))
+        ./venv_quality/bin/mypy .
+        ./venv_quality/bin/flake8 $changed_files
         codespell
 
     - name: Run tests

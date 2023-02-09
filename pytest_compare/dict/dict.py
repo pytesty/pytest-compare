@@ -28,6 +28,9 @@ class CompareDictContains(CompareDictBase):
             expected (dict): First dictionary.
             reverse_contains (bool, optional): If True, the comparison is reversed.
         """
+        if not isinstance(expected, dict):
+            raise TypeError(f"Expected must be a dictionary, not {type(expected)}")
+
         super().__init__(expected)
         self._reverse_contains = reverse_contains
 

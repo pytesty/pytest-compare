@@ -5,7 +5,7 @@ import pytest
 
 from pytest_compare.base import CompareBase
 from tests.base_test import BaseTest
-from tests.dict.conftest import DICT_LENGTH
+from tests.test_dict.conftest import DICT_LENGTH
 
 
 class TestCompareDictContains(BaseTest):

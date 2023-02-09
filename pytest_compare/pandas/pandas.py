@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import Optional, List
+from typing import Optional, List, Union
 
 import pandas as pd
 
@@ -7,15 +7,17 @@ from pytest_compare.base import CompareBase
 
 
 class CompareDataFrameBase(CompareBase, ABC):
-    def __init__(self, expected: pd.DataFrame):
+    def __init__(self, expected: Union[pd.DataFrame, pd.Series]):
         """Initialize the class.
 
         Args:
-            expected (pd.DataFrame): First dataframe.
+            expected (Union[pd.DataFrame, pd.Series]): First dataframe.
         """
-        if not isinstance(expected, pd.DataFrame):
+        if not isinstance(expected, pd.DataFrame) and not isinstance(
+            expected, pd.Series
+        ):
             raise TypeError(
-                f"Dataframe must be a pandas DataFrame, not {type(expected)}"
+                f"Dataframe must be a pandas DataFrame or Series, not {type(expected)}"
             )
 
         self._expected = expected
@@ -54,3 +56,27 @@ class CompareDataFrame(CompareDataFrameBase):
             return actual.equals(self._expected)
         else:
             return actual[self._columns].equals(self._expected[self._columns])
+
+
+class CompareSeries(CompareDataFrameBase):
+    """Compare two series"""
+
+    def __init__(self, expected: pd.Series):
+        """Initialize the class.
+
+        Args:
+            expected (pd.Series): Series to compare.
+        """
+        super().__init__(expected)
+
+    def compare(self, actual) -> bool:
+        """Compare two series.
+
+        Args:
+            actual (pd.Series): Series to compare.
+
+        Returns:
+            bool: True if the first dictionary is a subset of the second
+                dictionary, False otherwise.
+        """
+        return not isinstance(actual, pd.DataFrame) and actual.equals(self._expected)

@@ -149,7 +149,7 @@ Implement features:
   - [x] CompareDataFrame: Compare DataFrame
   - [x] CompareDictContains: Compare dict contains
   - [x] CompareDickKeys: Compare dict keys
-  - [ ] CompareSeries: Compare Series
+  - [x] CompareSeries: Compare Series
   - [ ] CompareType: Compare object types
   - [ ] CompareLength: Compare object length
   - [ ] CompareDictKeys: Compare dict keys

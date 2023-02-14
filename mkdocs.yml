@@ -1,5 +1,7 @@
 site_name: Pytest Compare
 
+site_url: https://ilyamichlin.github.io/pytest-compare/
+
 theme:
   name: material
   features:

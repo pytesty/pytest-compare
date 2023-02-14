@@ -1,20 +1,28 @@
 # Contributing
 
+## Github
+
+[Github repository](https://github.com/IlyaMichlin/pytest-compare)
+
 ## Setup
 
 ### Virtual Environment
 
 Create a virtual environment and install the dependencies:
 
-    $ python3 -m venv venv
-    $ source venv/bin/activate
-    $ pip install -e ".[pandas]" -r requirements-dev.txt -r requirements-quality.txt
+```shell
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -e ".[pandas]" -r requirements-dev.txt -r requirements-quality.txt
+```
 
 ### Pre-commit Hooks
 
 Start by installing the pre-commit hooks which will run `black`, `mypy`, `flake8`, and `codespell` on every commit.:
 
-    $ hooks/autohook.sh install
+```shell
+$ hooks/autohook.sh install
+```
 
 ## Creating tests
 
@@ -22,7 +30,9 @@ Start by installing the pre-commit hooks which will run `black`, `mypy`, `flake8
 
 To test the code, run the following command:
 
-    $ pytest
+```shell
+$ pytest
+```
 
 ### Writing tests
 

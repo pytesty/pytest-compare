@@ -73,7 +73,7 @@ class CompareDataFrameColumns(CompareDataFrameBase):
         if not isinstance(actual, pd.DataFrame):
             raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
 
-        return actual.columns == self._expected.columns
+        return actual.columns.equals(self._expected.columns)
 
 
 class CompareSeries(CompareDataFrameBase):

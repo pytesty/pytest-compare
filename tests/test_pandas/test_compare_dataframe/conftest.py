@@ -5,11 +5,7 @@ import pytest
 
 from pytest_compare.base import CompareBase
 from pytest_compare.pandas import CompareDataFrame
-
-
-def create_dataframe(columns: List[str], rows_n: int = 10) -> pd.DataFrame:
-    """Create a dataframe with the given columns."""
-    return pd.DataFrame({column: [n for n in range(rows_n)] for column in columns})
+from tests.test_pandas.conftest import create_dataframe
 
 
 @pytest.fixture

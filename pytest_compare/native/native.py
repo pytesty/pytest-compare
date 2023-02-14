@@ -100,5 +100,5 @@ class CompareSubString(CompareBase):
             raise TypeError(f"Actual must be a string, not {type(actual)}")
 
         if self.reverse:
-            return self.expected in actual
+            return actual in self.expected
         return self.expected in actual

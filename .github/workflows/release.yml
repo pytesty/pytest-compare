@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run tests workflow
-        used: ./.github/workflows/tests.yml
+        uses: ./.github/workflows/tests.yml
 
       - name: Checkout repository
         uses: actions/checkout@v3

@@ -46,7 +46,7 @@ class CompareDictContains(CompareDictBase):
                 dictionary, False otherwise.
         """
         if not isinstance(actual, dict):
-            return False
+            raise TypeError(f"Actual must be a dictionary, not {type(actual)}")
 
         if self._reverse_contains:
             return actual.items() <= self._expected.items()

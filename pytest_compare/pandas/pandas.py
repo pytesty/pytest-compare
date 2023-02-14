@@ -50,7 +50,7 @@ class CompareDataFrame(CompareDataFrameBase):
                 dictionary, False otherwise.
         """
         if not isinstance(actual, pd.DataFrame):
-            return False
+            raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
 
         if not self._columns:
             return actual.equals(self._expected)
@@ -71,7 +71,7 @@ class CompareDataFrameColumns(CompareDataFrameBase):
             bool: True if columns are identical, False otherwise.
         """
         if not isinstance(actual, pd.DataFrame):
-            return False
+            raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
 
         return actual.columns == self._expected.columns
 
@@ -97,4 +97,6 @@ class CompareSeries(CompareDataFrameBase):
             bool: True if the first dictionary is a subset of the second
                 dictionary, False otherwise.
         """
-        return not isinstance(actual, pd.DataFrame) and actual.equals(self._expected)
+        if not isinstance(actual, pd.Series):
+            raise TypeError(f"Series must be a pandas Series, not {type(actual)}")
+        return actual.equals(self._expected)

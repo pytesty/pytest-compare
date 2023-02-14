@@ -20,11 +20,11 @@ jobs:
   release-package:
     runs-on: ubuntu-latest
     steps:
-      - name: Run tests workflow
-        uses: ./.github/workflows/tests.yml
-
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Run tests workflow
+        uses: ./.github/workflows/tests.yml
 
       - name: Set version
         run: |

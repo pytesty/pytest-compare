@@ -22,7 +22,7 @@ def reverse() -> bool:
 
 
 @pytest.fixture
-def actual_call_args(string, reverse: bool) -> tuple[str, bool]:
+def actual_call_args(string, reverse: bool) -> Tuple[str, bool]:
     return string, reverse
 
 

@@ -60,7 +60,7 @@ class CompareIsSubclassOf(CompareBase):
 class CompareLength(CompareBase):
     """Compare length."""
 
-    def __init__(self, expected: int):
+    def __init__(self, expected: Any):
         self.expected = expected
 
     def compare(self, actual: Any) -> bool:

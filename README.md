@@ -140,34 +140,3 @@ def expected_call_kwargs() -> Dict[str, CompareBase]:
 The test file must implement a test class that inherits from `BaseTest`.
 
 That way two base tests will be run for each `Compare` module that wil test the `args` and `kwargs` of the method call.
-
-
-## Future development
-
-Implement features:
-- [ ] Compare classes:
-  - [x] CompareDataFrame: Compare DataFrame
-  - [x] CompareDictContains: Compare dict contains
-  - [x] CompareDickKeys: Compare dict keys
-  - [x] CompareSeries: Compare Series
-  - [ ] CompareType: Compare object types
-  - [ ] CompareLength: Compare object length
-  - [ ] CompareDictKeys: Compare dict keys
-  - [ ] CompareSubstring: Compare substring
-  - [ ] CompareDataFrameColumns: Compare DataFrame columns
-- [x] Create testing environment
-  - [x] Create `pytest` tests
-  - [x] Create tox testing
-- [x] Create pre-commit hooks
-  - [x] Run `black` formatting
-  - [x] Run `mypy` linting
-  - [x] Run `flake8` linting
-  - [x] Run `codespell` tests
-  - [x] Check test coverage
-- [x] Standardize release process
-  - [x] Auto versioning
-  - [x] Release to TestPyPi
-  - [x] Release to PyPi
-  - [x] Release to GitHub
-  - [x] Generate CHANGELOG.md
-- [x] Create documentation website

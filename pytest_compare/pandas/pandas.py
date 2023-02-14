@@ -58,6 +58,24 @@ class CompareDataFrame(CompareDataFrameBase):
             return actual[self._columns].equals(self._expected[self._columns])
 
 
+class CompareDataFrameColumns(CompareDataFrameBase):
+    """Compare two dataframe columns"""
+
+    def compare(self, actual) -> bool:
+        """Compare two dataframe columns.
+
+        Args:
+            actual (pd.DataFrame): Dataframe to compare.
+
+        Returns:
+            bool: True if columns are identical, False otherwise.
+        """
+        if not isinstance(actual, pd.DataFrame):
+            return False
+
+        return actual.columns == self._expected.columns
+
+
 class CompareSeries(CompareDataFrameBase):
     """Compare two series"""
 

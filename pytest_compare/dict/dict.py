@@ -46,7 +46,7 @@ class CompareDictContains(CompareDictBase):
                 dictionary, False otherwise.
         """
         if not isinstance(actual, dict):
-            return False
+            raise TypeError(f"Actual must be a dictionary, not {type(actual)}")
 
         if self._reverse_contains:
             return actual.items() <= self._expected.items()
@@ -71,6 +71,7 @@ class CompareDickKeys(CompareDictBase):
             bool: True if the first dictionary has the same keys as the
                 second dictionary, False otherwise.
         """
-        return isinstance(actual, dict) and set(actual.keys()) == set(
-            self._expected.keys()
-        )
+        if not isinstance(actual, dict):
+            raise TypeError(f"Actual must be a dictionary, not {type(actual)}")
+
+        return set(actual.keys()) == set(self._expected.keys())

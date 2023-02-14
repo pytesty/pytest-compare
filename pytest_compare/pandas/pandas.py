@@ -50,12 +50,30 @@ class CompareDataFrame(CompareDataFrameBase):
                 dictionary, False otherwise.
         """
         if not isinstance(actual, pd.DataFrame):
-            return False
+            raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
 
         if not self._columns:
             return actual.equals(self._expected)
         else:
             return actual[self._columns].equals(self._expected[self._columns])
+
+
+class CompareDataFrameColumns(CompareDataFrameBase):
+    """Compare two dataframe columns"""
+
+    def compare(self, actual) -> bool:
+        """Compare two dataframe columns.
+
+        Args:
+            actual (pd.DataFrame): Dataframe to compare.
+
+        Returns:
+            bool: True if columns are identical, False otherwise.
+        """
+        if not isinstance(actual, pd.DataFrame):
+            raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
+
+        return actual.columns.equals(self._expected.columns)
 
 
 class CompareSeries(CompareDataFrameBase):
@@ -79,4 +97,6 @@ class CompareSeries(CompareDataFrameBase):
             bool: True if the first dictionary is a subset of the second
                 dictionary, False otherwise.
         """
-        return not isinstance(actual, pd.DataFrame) and actual.equals(self._expected)
+        if not isinstance(actual, pd.Series):
+            raise TypeError(f"Series must be a pandas Series, not {type(actual)}")
+        return actual.equals(self._expected)

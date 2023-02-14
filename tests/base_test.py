@@ -1,10 +1,11 @@
+from abc import ABC
 from typing import Tuple, Any, Dict, Union
 from unittest.mock import Mock
 
 from pytest_compare.base import CompareBase
 
 
-class BaseTest:
+class BaseTest(ABC):
     def test_call_args(
         self,
         method_call_test_args: Mock,

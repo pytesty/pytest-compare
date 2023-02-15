@@ -102,6 +102,10 @@ jobs:
           name: v${{ env.RELEASE_VERSION }}
           tag_name: v${{ env.RELEASE_VERSION }}
 
-  deploy_docs:
+  deploy-docs:
     needs: release-package
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     uses: ./.github/workflows/deploy_docs.yml

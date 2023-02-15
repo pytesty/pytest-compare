@@ -4,13 +4,13 @@
 [![DOI](https://github.com/pytest-dev/pytest/workflows/test/badge.svg)](https://github.com/IlyaMichlin/pytest-compare/actions?query=workflow%3Atests)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-# Watt is it?
+# What is it?
 The `pytest-compare` helps validate method call arguments when testing python code.
 
 `pytest-compare` is designed to work with [assert methods](https://docs.python.org/3/library/unittest.mock.html#the-mock-class). While python native variables can be easily compared, a more complicated structures sometimes do not. For example validating a `pd.DataFrame` will raise an exception. This is where `pytest-compare` comes in. It allows this kind of structures to be easily compared.
 
 # How to install
-To install `pytest-compare` from PyPi, run the commmand:
+To install `pytest-compare` from PyPi, run the command:
 
 ```sh
 pip install pytest-compare
@@ -46,7 +46,7 @@ mock_method.assert_called_once_with(CompareDataFrame(df))
 ```
 
 ## Multiple arguments in a call
-When a method is called using multiple arguments, all of them must be addressed in the test. while python native varibles can be easily compared, `pytest-compare` is designed to compare a more complicated structures and do custom compares.
+When a method is called using multiple arguments, all of them must be addressed in the test. while python native variables can be easily compared, `pytest-compare` is designed to compare a more complicated structures and do custom compares.
 
 ```python
 with patch.object(ProductionClass, 'method', return_value=None) as mock_method:

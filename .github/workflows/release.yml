@@ -17,14 +17,15 @@ env:
   VERSION_FILE_PATH: pytest_compare/__init__.py
 
 jobs:
+  run-tests:
+    uses: ./.github/workflows/tests.yml
+
   release-package:
     runs-on: ubuntu-latest
+    needs: run-tests
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Run tests workflow
-        uses: ./.github/workflows/tests.yml
 
       - name: Set version
         run: |
@@ -101,5 +102,6 @@ jobs:
           name: v${{ env.RELEASE_VERSION }}
           tag_name: v${{ env.RELEASE_VERSION }}
 
-      - name: Run deploy_docs workflow
-        uses: ./.github/workflows/deploy_docs.yml
+  deploy_docs:
+    needs: release-package
+    uses: ./.github/workflows/deploy_docs.yml

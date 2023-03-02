@@ -1,6 +1,6 @@
 name: Deploy Docs
 
-on: [workflow_call]
+on: [workflow_call, workflow_dispatch]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

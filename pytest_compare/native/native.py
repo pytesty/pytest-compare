@@ -6,8 +6,7 @@ from pytest_compare.base import CompareBase
 class CompareType(CompareBase):
     """Compare type."""
 
-    def __init__(self, expected: Type):
-        self.expected = expected
+    EXPECTED_TYPE = Type
 
     def compare(self, actual: Any) -> bool:
         """Compare the actual type to the expected type.
@@ -24,8 +23,7 @@ class CompareType(CompareBase):
 class CompareIsInstanceOf(CompareBase):
     """Compare instance of."""
 
-    def __init__(self, expected: Type):
-        self.expected = expected
+    EXPECTED_TYPE = Type
 
     def compare(self, actual: Any) -> bool:
         """Compare the actual type to the expected type.
@@ -42,8 +40,7 @@ class CompareIsInstanceOf(CompareBase):
 class CompareIsSubclassOf(CompareBase):
     """Compare instance of."""
 
-    def __init__(self, expected: Type):
-        self.expected = expected
+    EXPECTED_TYPE = Type
 
     def compare(self, actual: Any) -> bool:
         """Compare the actual type to the expected type.
@@ -60,9 +57,6 @@ class CompareIsSubclassOf(CompareBase):
 class CompareLength(CompareBase):
     """Compare length."""
 
-    def __init__(self, expected: Any):
-        self.expected = expected
-
     def compare(self, actual: Any) -> bool:
         """Compare the actual length to the expected length.
 
@@ -78,13 +72,14 @@ class CompareLength(CompareBase):
 class CompareSubString(CompareBase):
     """Compare substring."""
 
-    def __init__(self, expected: str, reverse: bool = False):
-        if not isinstance(expected, str):
-            raise TypeError(f"Expected must be a string, not {type(expected)}")
-        if not isinstance(reverse, bool):
-            raise TypeError(f"Reverse must be a boolean, not {type(reverse)}")
+    EXPECTED_TYPE = str
+    ACTUAL_TYPE = str
 
-        self.expected = expected
+    def __init__(self, expected: EXPECTED_TYPE, reverse: bool = False):
+        if not isinstance(reverse, bool):
+            raise TypeError(f"'reverse' must be a bool, not {type(reverse)}")
+
+        super().__init__(expected)
         self.reverse = reverse
 
     def compare(self, actual: Any) -> bool:
@@ -96,9 +91,6 @@ class CompareSubString(CompareBase):
         Returns:
             True if the actual value matches the expected value.
         """
-        if not isinstance(actual, str):
-            raise TypeError(f"Actual must be a string, not {type(actual)}")
-
         if self.reverse:
             return actual in self.expected
         return self.expected in actual

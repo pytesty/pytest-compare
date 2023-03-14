@@ -7,24 +7,15 @@ from pytest_compare.base import CompareBase
 
 
 class CompareDataFrameBase(CompareBase, ABC):
-    def __init__(self, expected: Union[pd.DataFrame, pd.Series]):
-        """Initialize the class.
-
-        Args:
-            expected (Union[pd.DataFrame, pd.Series]): First dataframe.
-        """
-        if not isinstance(expected, pd.DataFrame) and not isinstance(
-            expected, pd.Series
-        ):
-            raise TypeError(
-                f"Dataframe must be a pandas DataFrame or Series, not {type(expected)}"
-            )
-
-        self._expected = expected
+    EXPECTED_TYPE = Union[pd.DataFrame, pd.Series]
+    ACTUAL_TYPE = Union[pd.DataFrame, pd.Series]
 
 
 class CompareDataFrame(CompareDataFrameBase):
     """Compare two dataframes"""
+
+    EXPECTED_TYPE = pd.DataFrame
+    ACTUAL_TYPE = pd.DataFrame
 
     def __init__(self, expected: pd.DataFrame, columns: Optional[List[str]] = None):
         """Initialize the class.
@@ -33,13 +24,16 @@ class CompareDataFrame(CompareDataFrameBase):
             expected (pd.DataFrame): Dataframe to compare.
             columns (Optional[List[str]], optional): Columns to compare. If None, all columns are compared. Defaults to None.
         """
+        super().__init__(expected)
+
         if columns and not isinstance(columns, list):
             raise TypeError(f"Columns must be a list, not {type(columns)}")
+        if columns and not all(isinstance(column, str) for column in columns):
+            raise TypeError(f"Columns must be a list of strings")
 
-        super().__init__(expected)
         self._columns = columns
 
-    def compare(self, actual) -> bool:
+    def compare(self, actual: pd.DataFrame) -> bool:
         """Compare two dataframes.
 
         Args:
@@ -49,19 +43,19 @@ class CompareDataFrame(CompareDataFrameBase):
             bool: True if the first dictionary is a subset of the second
                 dictionary, False otherwise.
         """
-        if not isinstance(actual, pd.DataFrame):
-            raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
-
         if not self._columns:
-            return actual.equals(self._expected)
+            return actual.equals(self.expected)
         else:
-            return actual[self._columns].equals(self._expected[self._columns])
+            return actual[self._columns].equals(self.expected[self._columns])
 
 
 class CompareDataFrameColumns(CompareDataFrameBase):
     """Compare two dataframe columns"""
 
-    def compare(self, actual) -> bool:
+    EXPECTED_TYPE = pd.DataFrame
+    ACTUAL_TYPE = pd.DataFrame
+
+    def compare(self, actual: pd.DataFrame) -> bool:
         """Compare two dataframe columns.
 
         Args:
@@ -70,24 +64,16 @@ class CompareDataFrameColumns(CompareDataFrameBase):
         Returns:
             bool: True if columns are identical, False otherwise.
         """
-        if not isinstance(actual, pd.DataFrame):
-            raise TypeError(f"Dataframe must be a pandas DataFrame, not {type(actual)}")
-
-        return actual.columns.equals(self._expected.columns)
+        return actual.columns.equals(self.expected.columns)
 
 
 class CompareSeries(CompareDataFrameBase):
     """Compare two series"""
 
-    def __init__(self, expected: pd.Series):
-        """Initialize the class.
+    EXPECTED_TYPE = pd.Series
+    ACTUAL_TYPE = pd.Series
 
-        Args:
-            expected (pd.Series): Series to compare.
-        """
-        super().__init__(expected)
-
-    def compare(self, actual) -> bool:
+    def compare(self, actual: pd.Series) -> bool:
         """Compare two series.
 
         Args:
@@ -97,6 +83,4 @@ class CompareSeries(CompareDataFrameBase):
             bool: True if the first dictionary is a subset of the second
                 dictionary, False otherwise.
         """
-        if not isinstance(actual, pd.Series):
-            raise TypeError(f"Series must be a pandas Series, not {type(actual)}")
-        return actual.equals(self._expected)
+        return actual.equals(self.expected)

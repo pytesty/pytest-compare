@@ -1,19 +1,12 @@
 from abc import ABC
+from typing import Dict
 
 from pytest_compare.base import CompareBase
 
 
 class CompareDictBase(CompareBase, ABC):
-    def __init__(self, expected: dict):
-        """Initialize the class.
-
-        Args:
-            expected (dict): First dictionary.
-        """
-        if not isinstance(expected, dict):
-            raise TypeError(f"Expected must be a dictionary, not {type(expected)}")
-
-        self._expected = expected
+    EXPECTED_TYPE = Dict
+    ACTUAL_TYPE = Dict
 
 
 class CompareDictContains(CompareDictBase):
@@ -21,20 +14,22 @@ class CompareDictContains(CompareDictBase):
     checks if the first dictionary is a subset of the second dictionary.
     """
 
-    def __init__(self, expected: dict, reverse_contains: bool = False):
+    def __init__(self, expected: Dict, reverse_contains: bool = False):
         """Initialize the class.
 
         Args:
             expected (dict): First dictionary.
             reverse_contains (bool, optional): If True, the comparison is reversed.
         """
-        if not isinstance(expected, dict):
-            raise TypeError(f"Expected must be a dictionary, not {type(expected)}")
-
         super().__init__(expected)
+
+        if reverse_contains and not isinstance(reverse_contains, bool):
+            raise TypeError(
+                f"'reverse_contains' must be a bool, not {type(reverse_contains)}"
+            )
         self._reverse_contains = reverse_contains
 
-    def compare(self, actual) -> bool:
+    def compare(self, actual: Dict) -> bool:
         """Compare two dictionaries and check if the first dictionary is a
         subset of the second dictionary.
 
@@ -45,13 +40,10 @@ class CompareDictContains(CompareDictBase):
             bool: True if the first dictionary is a subset of the second
                 dictionary, False otherwise.
         """
-        if not isinstance(actual, dict):
-            raise TypeError(f"Actual must be a dictionary, not {type(actual)}")
-
         if self._reverse_contains:
-            return actual.items() <= self._expected.items()
+            return actual.items() <= self.expected.items()
         else:
-            return self._expected.items() <= actual.items()
+            return self.expected.items() <= actual.items()
 
 
 class CompareDickKeys(CompareDictBase):
@@ -60,7 +52,7 @@ class CompareDickKeys(CompareDictBase):
     dictionary.
     """
 
-    def compare(self, actual) -> bool:
+    def compare(self, actual: Dict) -> bool:
         """Compare two dictionaries and check if the first dictionary has
         the same keys as the second dictionary.
 
@@ -71,7 +63,4 @@ class CompareDickKeys(CompareDictBase):
             bool: True if the first dictionary has the same keys as the
                 second dictionary, False otherwise.
         """
-        if not isinstance(actual, dict):
-            raise TypeError(f"Actual must be a dictionary, not {type(actual)}")
-
-        return set(actual.keys()) == set(self._expected.keys())
+        return set(actual.keys()) == set(self.expected.keys())

@@ -28,7 +28,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "pytest",
+    "typeguard",
 ]
 
 

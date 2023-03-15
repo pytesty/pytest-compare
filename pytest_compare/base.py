@@ -1,6 +1,8 @@
 from abc import abstractmethod, ABC
 from typing import Any, Type
 
+from typeguard import check_type
+
 
 class CompareBase(ABC):
     """Base class for all comparison classes."""
@@ -9,19 +11,11 @@ class CompareBase(ABC):
     ACTUAL_TYPE: Type = Any
 
     def __init__(self, expected: EXPECTED_TYPE):
-        if self.EXPECTED_TYPE != Any and not isinstance(expected, self.EXPECTED_TYPE):
-            raise TypeError(
-                f"'expected' must be a {self.EXPECTED_TYPE}, not {type(expected)}"
-            )
-
+        check_type(expected, self.EXPECTED_TYPE)
         self.expected = expected
 
     def __eq__(self, actual: ACTUAL_TYPE) -> bool:
-        if self.ACTUAL_TYPE != Any and not isinstance(actual, self.ACTUAL_TYPE):
-            raise TypeError(
-                f"'actual' must be a {self.ACTUAL_TYPE}, not {type(actual)}"
-            )
-
+        check_type(actual, self.ACTUAL_TYPE)
         return self.compare(actual)
 
     @abstractmethod

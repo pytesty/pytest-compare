@@ -13,7 +13,7 @@ def actual_reverse_contains() -> Optional[bool]:
 
 @pytest.fixture
 def actual_call_args(
-    actual_dict: dict, actual_reverse_contains: bool
+    actual_dict: dict, actual_reverse_contains: Optional[bool]
 ) -> Union[Tuple[dict], Tuple[dict, bool]]:
     if actual_reverse_contains is None:
         return (actual_dict,)
@@ -50,9 +50,17 @@ def expected_call_args(
 
 @pytest.fixture
 def expected_call_kwargs(
-    expected_dict: dict, expected_reverse_contains: bool, actual_reverse_contains: bool
+    expected_dict: dict,
+    expected_reverse_contains: bool,
+    actual_reverse_contains: Optional[bool],
 ) -> Dict[str, Union[CompareBase, bool]]:
+    expected = (
+        CompareDictContains(expected_dict, actual_reverse_contains)
+        if actual_reverse_contains is not None
+        else CompareDictContains(expected_dict)
+    )
+
     return {
-        "expected": CompareDictContains(expected_dict, actual_reverse_contains),
+        "expected": expected,
         "reverse_contains": expected_reverse_contains,
     }

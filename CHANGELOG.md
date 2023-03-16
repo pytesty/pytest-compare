@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
-## [0.1.0](https://github.com/pytesty/pytest-compare/releases/tag/0.1.0) - 2023-03-15
+## [0.1.0](https://github.com/pytesty/pytest-compare/releases/tag/0.1.0) - 2023-03-16
 
-<small>[Compare with first commit](https://github.com/pytesty/pytest-compare/compare/37b8ccc64fa05484cbc64f16bb674a41d494c030...0.1.0)</small>
+<small>[Compare with first commit](https://github.com/pytesty/pytest-compare/compare/811fcbf452b5a77149db9c5160880728245f44f6...0.1.0)</small>
 

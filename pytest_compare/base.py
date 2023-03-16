@@ -5,7 +5,9 @@ import pkg_resources
 from typeguard import check_type
 
 
-TYPEGUARD_VERSION_MAJOR = int(pkg_resources.get_distribution("typeguard").version.split(".")[0])
+TYPEGUARD_VERSION_MAJOR = int(
+    pkg_resources.get_distribution("typeguard").version.split(".")[0]
+)
 
 
 class CompareBase(ABC):

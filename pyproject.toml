@@ -37,9 +37,10 @@ pandas = ["pandas"]
 
 
 [project.urls]
-homepage = "https://ilyamichlin.github.io/pytest-compare/"
-documentation = "https://ilyamichlin.github.io/pytest-compare/documentation/"
-repository = "https://github.com/IlyaMichlin/pytest-compare/"
+homepage = "https://pytesty.github.io/pytest-compare/"
+documentation = "https://pytesty.github.io/pytest-compare/documentation/"
+repository = "https://github.com/pytesty/pytest-compare/"
+license = "https://pytesty.github.io/pytest-compare/license/"
 
 
 [tool.setuptools.dynamic]

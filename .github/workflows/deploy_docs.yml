@@ -24,6 +24,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Copy License File
+        run: cp LICENSE docs/license.md
+
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:

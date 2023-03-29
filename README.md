@@ -1,4 +1,4 @@
-# python-compare
+# pytest-compare
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/pytest_compare.svg)](https://pypi.org/project/pytest-compare/)
 [![License](https://camo.githubusercontent.com/2439ed6934e5c87e17a7d562cfb92c91d2a673d8/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f726168756c646b6a61696e2f6769746875622d70726f66696c652d726561646d652d67656e657261746f723f7374796c653d666c61742d737175617265)](https://pytesty.github.io/pytest-compare/license/)

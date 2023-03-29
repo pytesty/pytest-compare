@@ -2,7 +2,7 @@ from typing import Any, Type
 
 from typeguard import typechecked
 
-from pytest_compare.base import CompareBase
+from pytest_compare.base import CompareBase, CompareBaseReverse
 
 
 @typechecked
@@ -76,25 +76,33 @@ class CompareLength(CompareBase):
 
 
 @typechecked
-class CompareSubString(CompareBase):
+class CompareIn(CompareBaseReverse):
+    EXPECTED_TYPE = Any
+    ACTUAL_TYPE = Any
+
+    def compare(self, actual: ACTUAL_TYPE, expected: EXPECTED_TYPE) -> bool:
+        return actual in expected
+
+
+@typechecked
+class CompareSubString(CompareBaseReverse):
     """Compare substring."""
 
     EXPECTED_TYPE = str
     ACTUAL_TYPE = str
 
-    def __init__(self, expected: EXPECTED_TYPE, reverse: bool = False):
-        super().__init__(expected)
-        self.reverse = reverse
+    def __init__(self, expected: EXPECTED_TYPE, contains: bool = True, reverse: bool = False):
+        super().__init__(expected, reverse)
+        self.contains = contains
 
-    def compare(self, actual: ACTUAL_TYPE) -> bool:
+    def compare(self, actual: ACTUAL_TYPE, expected: EXPECTED_TYPE) -> bool:
         """Compare if the actual value is a substring of the expected value.
 
         Args:
             actual (str): The actual value.
+            expected (str): The expected value.
 
         Returns:
             True if the actual value is a substring of the expected value.
         """
-        if self.reverse:
-            return actual in self.expected
-        return self.expected in actual
+        return (self.expected in actual) ^ self.contains

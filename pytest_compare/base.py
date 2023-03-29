@@ -22,7 +22,7 @@ class CompareBase(ABC):
 
     def __eq__(self, actual: ACTUAL_TYPE) -> bool:
         self._check_type("actual", actual, self.ACTUAL_TYPE)
-        return self.compare(actual)
+        return self.compare(actual, self.expected)
 
     def _check_type(self, argname: str, value, expected_type):
         if TYPEGUARD_VERSION_MAJOR >= 3:
@@ -31,14 +31,32 @@ class CompareBase(ABC):
             check_type(argname, value, expected_type)
 
     @abstractmethod
-    def compare(self, actual: ACTUAL_TYPE) -> bool:
+    def compare(self, actual: ACTUAL_TYPE, expected: EXPECTED_TYPE) -> bool:
         """
         Compare two objects.
 
         Args:
             actual Any: The other object to compare to.
+            expected Any: The object to compare to.
 
         Returns:
             bool: True if the objects are equal, False otherwise.
         """
         pass
+
+
+class CompareBaseReverse(CompareBase, ABC):
+    EXPECTED_TYPE: Type = Any
+    ACTUAL_TYPE: Type = Any
+
+    def __init__(self, expected: EXPECTED_TYPE, reverse: bool = False):
+        super().__init__(expected)
+        self._check_type("reverse", reverse, self.EXPECTED_TYPE)
+        self.reverse = reverse
+
+    def __eq__(self, actual: ACTUAL_TYPE) -> bool:
+        self._check_type("actual", actual, self.ACTUAL_TYPE)
+        if self.reverse:
+            return self.compare(self.expected, actual)
+        else:
+            return self.compare(actual, self.expected)

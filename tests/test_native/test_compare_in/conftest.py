@@ -3,7 +3,7 @@ from typing import Dict, Tuple, Any
 import pytest
 
 from pytest_compare.base import CompareBase
-from pytest_compare.native import CompareSubString
+from pytest_compare.native import CompareIn
 
 
 @pytest.fixture
@@ -36,9 +36,9 @@ def actual_call_kwargs(substring: str, reverse: bool) -> Dict[str, Any]:
 
 @pytest.fixture
 def expected_call_args(string: str, reverse: bool) -> Tuple[CompareBase, bool]:
-    return CompareSubString(string, reverse), reverse
+    return CompareIn(string, reverse), reverse
 
 
 @pytest.fixture
 def expected_call_kwargs(string: str, reverse: bool) -> Dict[str, CompareBase]:
-    return {"expected": CompareSubString(string, reverse), "reverse": reverse}
+    return {"expected": CompareIn(string, reverse), "reverse": reverse}

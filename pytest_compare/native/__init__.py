@@ -3,6 +3,7 @@ from .native import (
     CompareIsInstanceOf,
     CompareIsSubclassOf,
     CompareLength,
+    CompareIn,
     CompareSubString,
 )
 
@@ -11,5 +12,6 @@ __all__ = [
     "CompareIsInstanceOf",
     "CompareIsSubclassOf",
     "CompareLength",
+    "CompareIn",
     "CompareSubString",
 ]
